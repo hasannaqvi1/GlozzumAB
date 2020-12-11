@@ -1,0 +1,204 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="saveProduct()"
+          [formGroup]="productForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="productNameId">Product Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="productNameId"
+                 type="text"
+                 placeholder="Name (required)"
+                 formControlName="productName"
+                 [ngClass]="{'is-invalid': displayMessage.productName }" />
+          <span class="invalid-feedback">
+            {{displayMessage.productName}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="productCodeId">Product Code</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="productCodeId"
+                 type="text"
+                 placeholder="Code (required)"
+                 formControlName="productCode"
+                 [ngClass]="{'is-invalid': displayMessage.productCode}" />
+          <span class="invalid-feedback">
+            {{displayMessage.productCode}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="manufacturedateId">Manufature Date</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="manufacturedateId"
+                 type="Date"
+                 placeholder="manufatureDate (required)"
+                 formControlName="manufactureDate"
+                 [ngClass]="{'is-invalid': displayMessage.manufactureDate}" />
+          <span class="invalid-feedback">
+            {{displayMessage.manufactureDate}}
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="expirydateId">Expiry Date</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="expirydateId"
+                 type="Date"
+                 placeholder="Date (required)"
+                 formControlName="expiryDate"
+                 [ngClass]="{'is-invalid': displayMessage.expiryDate}" />
+          <span class="invalid-feedback">
+            {{displayMessage.expiryDate}}
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="priceId">Price</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="priceId"
+                 type="text"
+                 placeholder="Price (required)"
+                 formControlName="price"
+                 [ngClass]="{'is-invalid': displayMessage.price}" />
+          <span class="invalid-feedback">
+            {{displayMessage.price}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="usageId">Usage</label>
+
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="usageId"
+                 type="text"
+                 placeholder="types of usage"
+                 formControlName="usage"
+                 [ngClass]="{'is-invalid': displayMessage.usage}" />
+          <span class="invalid-feedback">
+            {{displayMessage.usage}}
+          </span>
+        </div>
+      </div>
+
+      <div formArrayName="usage">
+        <div class="form-group row mb-2"
+             *ngFor="let tags of tags.controls; let i=index">
+          <label class="col-md-2 col-form-label"
+                 [attr.for]="i">Usage</label>
+
+          <div class="col-md-8">
+            <input class="form-control"
+                   [id]="i"
+                   type="text"
+                   placeholder="usage"
+                   [formControlName]="i" />
+          </div>
+          <button class="col-md-1 btn btn-outline-warning btn-sm"
+                  type="button"
+                  title="Delete this search usage"
+                  (click)="deleteTag(i)">Delete usage
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 mb-2">
+          <button class="btn btn-outline-secondary btn-sm"
+                  type="button"
+                  title="Add a search usage"
+                  (click)="addTag()">Add usage
+          </button>
+        </div>
+      </div>
+      
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="quantityId">Quantity</label>
+
+        <div class="col-md-8">
+          <input type="number" value="0" class="form-control"
+                    id="quantityId"
+                    placeholder="Quantity (required)"
+                    rows=3
+                    formControlName="quantity"
+                    [ngClass]="{'is-invalid': displayMessage.quantity}">
+            
+            <span class="invalid-feedback">
+            {{ displayMessage.quantity}}
+            </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="imageId">Add Image</label>
+        <div class="col-md-8">
+          <input class="form-control"
+          id="imageId"
+          type="file" id="img" name="img" accept="image/*"
+          formControlName="imageUrl"
+          [ngClass]="{'is-invalid': displayMessage.imageUrl}" />
+  
+          <label for="img">Select image:</label>
+          
+          <input type="submit">
+          </div>
+        </div>
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  style="width:80px;"
+                  type="submit">
+            Save
+          </button>
+          <button class="btn btn-outline-secondary mr-3"
+                  style="width:80px;"
+                  type="button"
+                  title="Cancel your edits"
+                  [routerLink]="['/products']">
+            Cancel
+          </button>
+          <button class="btn btn-outline-warning"
+                  style="width:80px"
+                  type="button"
+                  title="Delete this product"
+                  (click)="deleteProduct()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">{{errorMessage}}
+  </div>
+</div>

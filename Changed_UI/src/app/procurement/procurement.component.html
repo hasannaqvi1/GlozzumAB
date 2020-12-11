@@ -1,0 +1,148 @@
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="alert alert-success alert-dismissable" *ngIf="msg">
+        <a href="#" class="close" (click)="clickMe()">&times;</a>
+       {{msg}}
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<!---------------------------------------------------------------------------------------------------->
+    <div class="card-body">
+    <hr>   
+    <h4>Employees Needs!</h4>
+    <hr>
+<table class="table mb-0">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Employee Code</th>
+    <th>General Requirement</th>
+    <th>Medicine Requirement</th>
+    <th>Date of complaint</th>
+    <th>Note</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let procurement of procurement; let i=index">
+    <td>{{procurement.name}}</td>
+    <td>{{procurement.employeeCode}}</td>
+    <td>{{procurement.general}}</td>
+    <td>{{procurement.medicine}}</td>
+    <td>{{procurement.doc}}</td>
+    <td>{{procurement.note}}</td>
+    <td>
+        <a class="btn btn-outline-primary btn-sm" (click)="editEmployee(i)">Edit</a>
+        <a class="btn btn-outline-danger btn-sm" (click)="deleteEmployee(i)">Delete</a>
+    </td>
+  </tr>  
+</tbody>
+</table>
+</div>
+<!---------------------------------------------------------------------------------------------------->
+
+<div class="card-body">
+    <hr>
+    <h4>Update Needs</h4>
+    <hr>
+<form class="form-horizontal">
+<div class="form-group">
+    <label class="col-md-2 col-form-label" for="name">Name:</label>
+    <div class="col-sm-10">
+    <input type="text" class="form-control" id="name" 
+    name="name" [(ngModel)]="model2.name" placeholder="Enter your name">
+</div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="employeeCode">Employee Code:</label>
+    <div class="col-sm-10"> 
+    <input type="text" class="form-control" id="employeeCode"
+    name="employeeCode" [(ngModel)]="model2.employeeCode" placeholder="Enter your employee code">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-2" for="general">General Requirement:</label>
+    <div class="col-sm-10">
+    <select class="form-control" id="general"  name="general" [(ngModel)]="model.general">
+                <option value="Fan"  >Fan</option>
+                <option value="TubeLight"  >TubeLight</option>
+                <option value="Water cooler"  >Water cooler</option>
+                <option value="Chair"  >Chair</option>
+                <option value="Disposable cups">Disposable cups</option>
+                <option value="Hand Sanitizer"  >Hand Sanitizer</option>
+                <option value="Scissors"  >Scissors</option> 
+                <option value="Note Book"  >Note Book</option>
+                <option value="Gloves"  >Gloves</option>
+                <option value="Paper Bags"  >Paper Bags</option>
+                <option value="Curtains"  >Curtains</option>
+                <option value="Black Marker"  >Black Marker</option>
+                <option value="Ball pen"  >Ball pen</option>
+                <option value="Ac Repair"  >Ac Repair</option>
+                <option value="Bill book"  >Bill book</option>
+                <option value="Desktop repair"  >Desktop repair</option>
+                <option value="Software issue"  >Software issue</option>
+                <option value="Table"  >Table</option>
+                <option value="Tissue papers"  >Tissue papers</option>
+                <option value="None">None</option>
+                <option value="Others"  >Others</option>
+               </select>
+               </div>
+</div>
+<div class="form-group">
+    <label class="col-md-2" for="medicine">Medicine Requirement:</label>
+    <div class="col-sm-10">
+    <select class="form-control" id="medicine"  name="medicine" [(ngModel)]="model2.medicine">
+                <option value="Paracetamol"  >Paracetamol</option>
+                <option value="Evion"  >Evion 400</option>
+                <option value="Crocin"  >Crocin</option>
+                <option value="Cough"  >Cough</option>
+                <option value="Crocin Advance">Crocin Advance</option>
+                <option value="HCQS"  >HCQS</option>
+                <option value="Melxicam"  >Melxicam</option> 
+                <option value="Otezla"  >Otezla</option>
+                <option value="Ozempic"  >Ozempic</option>
+                <option value="Tramadol"  >Tramadol</option>
+                <option value="Tarazodone"  >Tarazodone</option>
+                <option value="Gilenya"  >Gilenya</option>
+                <option value="Faxiga"  >Faxiga</option>
+                <option value="Lyrica"  >Lyrica</option>
+                <option value="Viagra"  >Viagra</option>
+                <option value="Xanax"  >Xanax</option>
+                <option value="Humira"  >Humira</option>
+                <option value="Dupixent"  >Dupixent</option>
+                <option value="Ativan"  >Ativan</option>
+                <option value="None">None</option>
+                <option value="Others"  >Others</option>
+               </select>
+               </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-sm-2" for="doc">Date of Complaint:</label>
+    <div class="col-sm-10"> 
+    <input type="text" class="form-control" id="doc"
+    name="doc" [(ngModel)]="model2.doc" placeholder="Enter your complaint">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="note">Note:</label>
+    <div class="col-sm-10"> 
+    <textarea class="form-control" id="note"
+    name="note" [(ngModel)]="model2.note" placeholder="Enter Note">
+    </textarea>
+    </div>
+</div>
+<div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-outline-success btn-sm" (click)="updateEmployee()">Update</button>
+    </div>
+</div>
+
+
+<br/>
+
+</form>
+</div>

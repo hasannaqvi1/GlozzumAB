@@ -1,0 +1,14 @@
+.image{
+    background-image: url('https://mdsyncnet.com/wp-content/uploads/2016/12/Information-Technology-Connects-Patients-Doctors-1024x539.jpg');
+    /* min-height: 100%;
+    min-width: 1024px; */
+    background-position: center;
+    width: 100%;
+     background-size: cover;
+     height: 500px;
+
+    
+    
+    top: 0;
+    left: 0;
+   }

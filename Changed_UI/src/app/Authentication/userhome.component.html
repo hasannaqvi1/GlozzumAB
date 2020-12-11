@@ -1,0 +1,66 @@
+<div class="image">
+  <div class="container">
+      <div class="bd-example" class="card">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <div class="content" role="main">
+            <a class='nav-link' routerLinkActive='active'
+            [routerLink]="['/welcome']" class="btn btn-info">Contact us</a>
+          </div>
+        </div>
+        <h1>Welcome to Admin Page !!</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Product List</h5>
+              <p class="card-text">See the list of the stock here! </p>
+              <a routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="['/products']" class="btn btn-info" >Product List</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update the stock</h5>
+              <p class="card-text">want to update the stock?</p>
+              <a routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="['/products/0/edit']" class="btn btn-info">Add Product</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Procurement Details</h5>
+              <p class="card-text">Check the details of employee needs</p>
+              <a routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="['/procurement']" class="btn btn-success">Procurement details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Procurement needs</h5>
+              <p class="card-text">Need anything? drop your needs here!</p>
+              <a routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="['/addprocurement']" class="btn btn-success">Need Anything?</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Details of Employee</h5>
+              <p class="card-text">We proud on our employees</p>
+              <a routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="['/employee']" class="btn btn-warning">Employees Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+  </div>
+</div>
